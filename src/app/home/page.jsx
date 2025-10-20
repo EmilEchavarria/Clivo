@@ -1,42 +1,87 @@
+"use client";
+import Link from "next/link";
+import { useState, useEffect } from "react";
 export default function HomePage() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <nav className="fixed w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-orange-500 blur-lg opacity-30 rounded-full"></div>
-              <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">{}</span>
-              </div>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Clivo</span>
-          </div>
+<nav
+  className={`fixed w-full z-50 border-b border-gray-100 transition-all duration-500 ${
+    scrolled ? "bg-white/80 backdrop-blur-xl" : "bg-transparent"
+  } h-16`}
+>
+  <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+    <div className="flex items-center gap-3 h-full">
+      <div className="relative h-full flex items-center justify-center">
+        <img
+          src="/logo.png"
+          alt="Clivo logo"
+          className="h-25 w-auto object-contain scale-125 md:scale-150 transition-transform"
+        />
+      </div>
+    </div>
+
+          {/* Links */}
           <div className="hidden lg:flex gap-10 items-center">
-            <a href="#inicio" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
+            <a
+              href="#inicio"
+              className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group"
+            >
               Inicio
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#servicios" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
+            <a
+              href="#trabajos"
+              className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group"
+            >
+              Trabajos
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a
+              href="#servicios"
+              className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group"
+            >
               Servicios
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#proceso" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
+            <a
+              href="#proceso"
+              className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group"
+            >
               Proceso
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <a href="#testimonios" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
-              Testimonios
+            <a
+              href="#testimonios"
+              className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group"
+            >
+              Testimonioss
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
             </a>
           </div>
+
+          {/* Button */}
           <button className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105">
             Hablemos
           </button>
         </div>
       </nav>
-
+      
       {/* Hero Section */}
       <section id="inicio" className="pt-32 pb-20 px-6 bg-gradient-to-b from-orange-50/50 to-white">
         <div className="max-w-7xl mx-auto">
@@ -375,16 +420,22 @@ export default function HomePage() {
             Agenda una consultoría gratuita de 30 minutos. Sin compromiso. Hablemos de tu idea y cómo podemos ayudarte.
           </p>
           
-          <div className="flex flex-wrap gap-4 justify-center mb-16">
-            <button className="group px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 text-lg flex items-center gap-2">
-              Agendar llamada gratuita
-              <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </button>
-            <button className="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300 text-lg">
-              Ver nuestro portafolio
-            </button>
-          </div>
+         <div className="flex flex-wrap gap-4 justify-center mb-16">
+          <Link
+            href="/contact"
+            className="group px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 text-lg flex items-center gap-2"
+            >
+            Agendar llamada gratuita
+            <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </Link>
 
+          <Link
+            href="/portfolio"
+            className="px-10 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all duration-300 text-lg"
+            >
+            Ver nuestro portafolio
+          </Link>
+         </div>
           <div className="grid md:grid-cols-3 gap-8 pt-12 border-t border-white/10">
             <div className="text-center">
               <div className="text-3xl mb-2">⚡</div>
