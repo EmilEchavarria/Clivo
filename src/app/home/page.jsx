@@ -1,41 +1,12 @@
+import React from 'react';
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import styles from './page.module.css';
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
-      <nav className="fixed w-full bg-white/80 backdrop-blur-xl z-50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <div className="absolute inset-0 bg-orange-500 blur-lg opacity-30 rounded-full"></div>
-              <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">{}</span>
-              </div>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Clivo</span>
-          </div>
-          <div className="hidden lg:flex gap-10 items-center">
-            <a href="#inicio" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
-              Inicio
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#servicios" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
-              Servicios
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#proceso" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
-              Proceso
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-            <a href="#testimonios" className="text-gray-700 hover:text-orange-500 transition-all font-medium relative group">
-              Testimonios
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-orange-500 group-hover:w-full transition-all duration-300"></span>
-            </a>
-          </div>
-          <button className="px-6 py-2.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-orange-500/50 transition-all duration-300 hover:scale-105">
-            Hablemos
-          </button>
-        </div>
-      </nav>
+      <Header />
 
       {/* Hero Section */}
       <section id="inicio" className="pt-32 pb-20 px-6 bg-gradient-to-b from-orange-50/50 to-white">
@@ -365,7 +336,7 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-24 px-6 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCA0MmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMC0yMWMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI0Y5NzMxNiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCA0MmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMC0yMWMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY86Ni02IDYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI0Y5NzMxNiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
@@ -405,92 +376,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="bg-gradient-to-br from-orange-500 to-orange-600 w-10 h-10 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-bold">{}</span>
-                </div>
-                <span className="text-2xl font-bold">Clivo</span>
-              </div>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                Creando el futuro digital, un proyecto excepcional a la vez.
-              </p>
-              <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-orange-500 rounded-lg flex items-center justify-center transition-all duration-300">
-                  <span className="text-xl">𝕏</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-orange-500 rounded-lg flex items-center justify-center transition-all duration-300">
-                  <span className="text-xl">in</span>
-                </a>
-                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-orange-500 rounded-lg flex items-center justify-center transition-all duration-300">
-                  <span className="text-xl">▶</span>
-                </a>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-6 text-lg">Servicios</h4>
-              <ul className="space-y-3">
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Desarrollo Web</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Apps Móviles</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Diseño UX/UI</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Consultoría Tech</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-6 text-lg">Compañía</h4>
-              <ul className="space-y-3">
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Sobre Nosotros</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Nuestro Equipo</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Casos de Éxito</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Únete al equipo</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-6 text-lg">Contacto</h4>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="text-orange-500 text-xl">📧</span>
-                  <div>
-                    <div className="text-gray-400 text-sm mb-1">Email</div>
-                    <a href="mailto:hola@clivo.com" className="text-white hover:text-orange-500 transition-colors">hola@clivo.com</a>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-orange-500 text-xl">📱</span>
-                  <div>
-                    <div className="text-gray-400 text-sm mb-1">Teléfono</div>
-                    <span className="text-white">+1 (829) 627-2628</span>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-orange-500 text-xl">📍</span>
-                  <div>
-                    <div className="text-gray-400 text-sm mb-1">Ubicación</div>
-                    <span className="text-white">Santo Domingo, RD</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-400 text-sm">
-              © 2025 Clivo. Todos los derechos reservados.
-            </p>
-            <div className="flex gap-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Términos de Servicio</a>
-              <a href="#" className="text-gray-400 hover:text-orange-500 transition-colors">Cookies</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
