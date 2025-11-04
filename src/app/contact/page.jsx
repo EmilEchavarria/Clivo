@@ -1,17 +1,16 @@
 "use client";
-
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 import { useState } from "react";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
-    nombre: "",
+    name: "",
     email: "",
-    telefono: "",
-    servicio: "",
-    mensaje: "",
+    subject: "",
+    message: "",
   });
-
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState({ type: "", message: "" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,148 +18,122 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    setSubmitted(true);
+
+    if (!formData.name || !formData.email || !formData.message) {
+      setStatus({ type: "error", message: "Por favor completa todos los campos requeridos." });
+      return;
+    }
+
+    // Simula envío del formulario
+    setTimeout(() => {
+      setStatus({ type: "success", message: "¡Mensaje enviado con éxito! Te contactaremos pronto." });
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black flex flex-col items-center justify-center px-4 py-16">
-      
-      {/* Logo animado arriba del formulario */}
-      <div className="mb-6 animate-fade-slide">
-        <img
-          src="/logo.png"
-          alt="Clivo Logo"
-          className="w-28 h-28 md:w-32 md:h-32 object-contain"
-        />
-      </div>
+    <div className="min-h-screen bg-white">
+      <Header />
 
-      {/* Contenedor del formulario */}
-      <div className="max-w-4xl w-full bg-gray-900/80 backdrop-blur-xl rounded-2xl shadow-2xl p-10">
-        <h1 className="text-4xl font-bold text-white text-center mb-6">
-          Agenda tu asesoramiento
-        </h1>
-        <p className="text-gray-300 text-center mb-8">
-          Completa el formulario y nos pondremos en contacto contigo. 
-          Es rápido, seguro y sin compromiso.
-        </p>
+      <div className="min-h-screen bg-gradient-to-b from-gray-900 to-black px-6 py-32">
+        <div className="max-w-3xl mx-auto text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+            Contáctanos
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+            ¿Tienes una idea o proyecto en mente? ¡Nos encantaría escucharte!
+          </p>
+        </div>
 
-        {submitted ? (
-          <div className="text-center text-green-400 font-semibold text-xl">
-            ¡Gracias! Tu solicitud ha sido enviada.
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="max-w-2xl mx-auto bg-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/10 shadow-xl">
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Nombre */}
-            <div className="relative">
+            <div>
+              <label htmlFor="name" className="block text-left text-gray-300 mb-2 font-semibold">
+                Nombre completo *
+              </label>
               <input
                 type="text"
-                name="nombre"
-                value={formData.nombre}
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
-                required
-                className="peer w-full rounded-xl bg-gray-800 text-white px-4 pt-5 pb-2 outline-none border border-gray-700 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all"
-                placeholder=" "
+                placeholder="Tu nombre"
+                className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl border border-white/10 focus:outline-none focus:border-orange-500 transition-all"
               />
-              <label className="absolute left-4 top-2 text-gray-400 text-sm peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
-                Nombre
-              </label>
             </div>
 
-            {/* Email */}
-            <div className="relative">
+            {/* Correo */}
+            <div>
+              <label htmlFor="email" className="block text-left text-gray-300 mb-2 font-semibold">
+                Correo electrónico *
+              </label>
               <input
                 type="email"
+                id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                required
-                className="peer w-full rounded-xl bg-gray-800 text-white px-4 pt-5 pb-2 outline-none border border-gray-700 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all"
-                placeholder=" "
+                placeholder="correo@ejemplo.com"
+                className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl border border-white/10 focus:outline-none focus:border-orange-500 transition-all"
               />
-              <label className="absolute left-4 top-2 text-gray-400 text-sm peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
-                Email
-              </label>
             </div>
 
-            {/* Teléfono */}
-            <div className="relative">
+            {/* Asunto */}
+            <div>
+              <label htmlFor="subject" className="block text-left text-gray-300 mb-2 font-semibold">
+                Asunto
+              </label>
               <input
-                type="tel"
-                name="telefono"
-                value={formData.telefono}
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
                 onChange={handleChange}
-                className="peer w-full rounded-xl bg-gray-800 text-white px-4 pt-5 pb-2 outline-none border border-gray-700 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all"
-                placeholder=" "
+                placeholder="Motivo del mensaje"
+                className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl border border-white/10 focus:outline-none focus:border-orange-500 transition-all"
               />
-              <label className="absolute left-4 top-2 text-gray-400 text-sm peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
-                Teléfono (opcional)
-              </label>
             </div>
 
-            {/* Servicio */}
-            <div className="relative">
-              <select
-                name="servicio"
-                value={formData.servicio}
-                onChange={handleChange}
-                required
-                className="peer w-full rounded-xl bg-gray-800 text-white px-4 pt-5 pb-2 outline-none border border-gray-700 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all appearance-none"
-              >
-                <option value="" disabled hidden></option>
-                <option value="asesoramiento">Asesoramiento</option>
-                <option value="desarrollo_web">Desarrollo web</option>
-                <option value="otro">Otro</option>
-              </select>
-              <label className="absolute left-4 top-2 text-gray-400 text-sm peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
-                Tipo de servicio
+            {/* Mensaje */}
+            <div>
+              <label htmlFor="message" className="block text-left text-gray-300 mb-2 font-semibold">
+                Mensaje *
               </label>
-            </div>
-
-            {/* Mensaje (full width) */}
-            <div className="relative md:col-span-2">
               <textarea
-                name="mensaje"
-                value={formData.mensaje}
+                id="message"
+                name="message"
+                value={formData.message}
                 onChange={handleChange}
-                rows="4"
-                required
-                className="peer w-full rounded-xl bg-gray-800 text-white px-4 pt-5 pb-2 outline-none border border-gray-700 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all resize-none"
-                placeholder=" "
+                placeholder="Escribe tu mensaje..."
+                rows="5"
+                className="w-full px-4 py-3 bg-gray-800 text-white rounded-xl border border-white/10 focus:outline-none focus:border-orange-500 transition-all resize-none"
               />
-              <label className="absolute left-4 top-2 text-gray-400 text-sm peer-placeholder-shown:top-5 peer-placeholder-shown:text-gray-500 peer-placeholder-shown:text-base transition-all">
-                Mensaje
-              </label>
             </div>
+
+            {/* Estado del envío */}
+            {status.message && (
+              <p
+                className={`text-center font-medium ${
+                  status.type === "success" ? "text-green-400" : "text-red-400"
+                }`}
+              >
+                {status.message}
+              </p>
+            )}
 
             {/* Botón */}
-            <div className="md:col-span-2 text-center">
-              <button
-                type="submit"
-                className="px-10 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 text-lg flex items-center gap-2 justify-center mx-auto"
-              >
-                Enviar
-                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </button>
-            </div>
+            <button
+              type="submit"
+              className="w-full px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-xl hover:shadow-xl hover:shadow-orange-500/50 transition-all duration-300"
+            >
+              Enviar mensaje
+            </button>
           </form>
-        )}
+        </div>
       </div>
 
-      {/* Animación con Tailwind CSS */}
-      <style jsx>{`
-        .animate-fade-slide {
-          opacity: 0;
-          transform: translateY(20px);
-          animation: fadeSlideIn 0.6s forwards;
-        }
-        @keyframes fadeSlideIn {
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      <Footer />
     </div>
   );
 }
