@@ -1,7 +1,9 @@
+import formData from "form-data";
+import Mailgun from "mailgun.js";
+import nodemailer from "nodemailer";
+
 export async function sendEmail({ to, subject, text, html }) {
   if (process.env.MAIL_SERVICE === "mailgun") {
-    const formData = require("form-data");
-    const Mailgun = require("mailgun.js");
     const mailgun = new Mailgun(formData);
     const mg = mailgun.client({
       username: "api",
@@ -18,7 +20,6 @@ export async function sendEmail({ to, subject, text, html }) {
   }
 
   // fallback: Nodemailer (modo inicial)
-  const nodemailer = require("nodemailer");
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
