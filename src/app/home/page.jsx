@@ -4,16 +4,16 @@ import Link from "next/link";
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import Image from "next/image";
-import { 
-  Rocket, 
-  Smartphone, 
-  Palette, 
-  Cloud, 
-  Bot, 
-  Wrench, 
-  Search, 
-  PenTool, 
-  Zap, 
+import {
+  Rocket,
+  Smartphone,
+  Palette,
+  Cloud,
+  Bot,
+  Wrench,
+  Search,
+  PenTool,
+  Zap,
   TrendingUp,
   CheckCircle,
   Target
@@ -24,7 +24,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-white">
       {/* Header Component */}
       <Header />
-      
+
       {/* Hero Section */}
       <section id="inicio" className="relative pt-32 pb-20 px-6 overflow-hidden min-h-screen">
         {/* Background Image with Overlay */}
@@ -51,7 +51,7 @@ export default function HomePage() {
                   excepcionales
                 </span>
               </h1>
-              
+
               <p className="text-xl text-white mb-12 leading-relaxed drop-shadow-md max-w-3xl mx-auto">
                 Somos tu socio tecnológico de confianza. Transformamos ideas en aplicaciones web y móviles que generan resultados reales para tu negocio.
               </p>
@@ -96,9 +96,9 @@ export default function HomePage() {
           <p className="text-center text-gray-600 font-medium mb-8">Empresas que confían en nosotros</p>
           <div className="flex flex-wrap justify-center items-center gap-12">
             {/* Logo AgroGestor */}
-            <a 
-              href="https://agrogestor.vercel.app" 
-              target="_blank" 
+            <a
+              href="https://agrogestor.vercel.app"
+              target="_blank"
               rel="noopener noreferrer"
               className="w-40 h-20 relative block hover:scale-110 transition-all duration-300 opacity-80 hover:opacity-100 cursor-pointer"
             >
@@ -109,7 +109,7 @@ export default function HomePage() {
                 className="object-contain"
               />
             </a>
-            
+
             {/* Placeholders para más logos */}
             {[1, 2, 3, 4].map((i) => (
               <div key={i} className="w-40 h-20 bg-gray-300 rounded-lg opacity-40"></div>
@@ -179,11 +179,10 @@ export default function HomePage() {
             ].map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <div 
+                <div
                   key={index}
-                  className={`group relative bg-white rounded-2xl p-8 border-2 ${
-                    service.color === 'orange' ? 'border-orange-200 hover:border-orange-500 hover:shadow-xl hover:shadow-orange-500/10' : 'border-gray-200 hover:border-gray-400 hover:shadow-xl'
-                  } transition-all duration-300 hover:-translate-y-2`}
+                  className={`group relative bg-white rounded-2xl p-8 border-2 ${service.color === 'orange' ? 'border-orange-200 hover:border-orange-500 hover:shadow-xl hover:shadow-orange-500/10' : 'border-gray-200 hover:border-gray-400 hover:shadow-xl'
+                    } transition-all duration-300 hover:-translate-y-2`}
                 >
                   <div className={`mb-6 ${service.color === 'orange' ? 'text-orange-500' : 'text-gray-700'} group-hover:scale-110 transition-transform duration-300`}>
                     <IconComponent size={48} strokeWidth={1.5} />
@@ -196,13 +195,12 @@ export default function HomePage() {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {service.features.map((feature, idx) => (
-                      <span 
-                        key={idx} 
-                        className={`text-xs px-3 py-1.5 rounded-full font-medium ${
-                          service.color === 'orange' 
-                            ? 'bg-orange-50 text-orange-700 border border-orange-200' 
+                      <span
+                        key={idx}
+                        className={`text-xs px-3 py-1.5 rounded-full font-medium ${service.color === 'orange'
+                            ? 'bg-orange-50 text-orange-700 border border-orange-200'
                             : 'bg-gray-100 text-gray-700 border border-gray-200'
-                        }`}
+                          }`}
                       >
                         {feature}
                       </span>
@@ -329,8 +327,8 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="py-24 px-6 bg-gradient-to-br from-gray-900 to-black text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCA0MmMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMC0yMWMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY04Ni02IDYtNiAyLjY4Ni02IDYtNnoiIHN0cm9rZT0iI0Y5NzMxNiIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
-        
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjIiIGZpbGw9IiNGOTczMTYiIGZpbGwtb3BhY2l0eT0iMC4xIi8+PC9nPjwvc3ZnPg==')] opacity-20"></div>
+
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
             ¿Listo para hacer realidad tu proyecto?
@@ -338,7 +336,7 @@ export default function HomePage() {
           <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
             Agenda una consultoría gratuita de 30 minutos. Sin compromiso. Hablemos de tu idea y cómo podemos ayudarte.
           </p>
-          
+
           <div className="flex flex-wrap gap-4 justify-center mb-16">
             <Link
               href="/contact"
